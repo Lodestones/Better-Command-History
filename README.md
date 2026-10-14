@@ -1,7 +1,7 @@
 <div align="center">
 <br />
-<img alt="Better Command History" width="200" src="src/main/resources/assets/bettercommandhistory/icon.png" />
-<h1>Better Command History</h1>
+<img alt="Better Command History" width="640" src=".github/banner.png" />
+<br />
 <b>
   <i>A QoL mod for chat history. Type the start of a command and press Up to jump straight back to it, skipping everything you ran since.</i>
 </b>
