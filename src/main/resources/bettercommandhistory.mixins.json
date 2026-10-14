@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "ChatScreenMixin",
-    "CommandHistoryMixin"
+    "CommandHistoryMixin",
+    "CommandSuggestionsAccessor",
+    "SuggestionsListAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
