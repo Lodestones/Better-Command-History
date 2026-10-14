@@ -1,0 +1,61 @@
+// Shared by every version subproject: the common sources, metadata and jar naming.
+
+version = "${rootProject.mod_version}+${project.game_version}"
+group = rootProject.maven_group
+
+base {
+    archivesName = rootProject.archives_base_name
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java.srcDir rootProject.file('src/main/java')
+        resources.srcDir rootProject.file('src/main/resources')
+    }
+}
+
+processResources {
+    inputs.property "version", rootProject.mod_version
+    inputs.property "minecraft_dependency", project.minecraft_dependency
+    inputs.property "loader_version", project.loader_version
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand "version": rootProject.mod_version,
+                "minecraft_dependency": project.minecraft_dependency,
+                "loader_version": project.loader_version
+    }
+}
+
+def targetJavaVersion = project.java_version as int
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release.set(targetJavaVersion)
+}
+
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+    withSourcesJar()
+}
+
+jar {
+    from(rootProject.file("LICENSE")) {
+        rename { "${it}_${rootProject.archives_base_name}" }
+    }
+}
+
+// Every version's jar lands in the root build/libs, so a release is one folder.
+tasks.register('collectJar', Copy) {
+    def finalJar = tasks.named(tasks.findByName('remapJar') ? 'remapJar' : 'jar')
+    from finalJar
+    into rootProject.layout.buildDirectory.dir('libs')
+}
+tasks.named('build') { finalizedBy 'collectJar' }

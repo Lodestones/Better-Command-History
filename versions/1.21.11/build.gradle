@@ -1,0 +1,21 @@
+plugins {
+    id 'net.fabricmc.fabric-loom-remap'
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    // Optional: only its API is compiled against, the config button appears when it is installed.
+    modCompileOnly "maven.modrinth:modmenu:17.0.1"
+}
+
+repositories {
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+    }
+}
+
+apply from: rootProject.file('common.gradle')

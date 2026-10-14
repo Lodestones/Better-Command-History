@@ -1,0 +1,5 @@
+plugins {
+    // 26.x ships unobfuscated; 1.21.11 still needs remapping from Mojang's mappings.
+    id 'net.fabricmc.fabric-loom' version "${loom_version}" apply false
+    id 'net.fabricmc.fabric-loom-remap' version "${loom_version}" apply false
+}

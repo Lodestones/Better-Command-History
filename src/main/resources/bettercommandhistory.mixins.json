@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "gg.lode.bettercommandhistory.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ChatScreenMixin",
+    "CommandHistoryMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

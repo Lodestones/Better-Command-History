@@ -1,0 +1,20 @@
+plugins {
+    id 'net.fabricmc.fabric-loom'
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    // Optional: only its API is compiled against, the config button appears when it is installed.
+    compileOnly "maven.modrinth:modmenu:20.0.3"
+}
+
+repositories {
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+    }
+}
+
+apply from: rootProject.file('common.gradle')

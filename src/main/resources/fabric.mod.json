@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "bettercommandhistory",
+  "version": "${version}",
+  "name": "Better Command History",
+  "description": "A QoL mod for chat history. Type the start of a command and press Up to jump straight back to it, skipping everything you ran since.",
+  "authors": [
+    "Apollo30"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Lodestones/Better-Command-History",
+    "sources": "https://github.com/Lodestones/Better-Command-History",
+    "issues": "https://github.com/Lodestones/Better-Command-History/issues",
+    "discord": "https://discord.gg/lodestone"
+  },
+  "license": "MIT",
+  "icon": "assets/bettercommandhistory/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "modmenu": [
+      "gg.lode.bettercommandhistory.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "bettercommandhistory.mixins.json"
+  ],
+  "suggests": {
+    "modmenu": "*"
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_dependency}"
+  }
+}

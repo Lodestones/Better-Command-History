@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'Better-Command-History'
+
+// One subproject per Minecraft version, all compiling the shared src/ tree.
+['1.21.11', '26.1', '26.2', '26.3'].each { mc ->
+    include ":$mc"
+    project(":$mc").projectDir = file("versions/$mc")
+}
